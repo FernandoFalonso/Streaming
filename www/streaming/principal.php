@@ -25,8 +25,22 @@ $videos = [];
 if (isset($_GET["orden"])) {
     if ($_GET["orden"] == "alfa") {
         
+        
+        
+    } elseif ($_GET["orden"] == "tema") {
+        
         foreach ($usuario->perfiles as $i => $valor) {
-            $consulta = $canal->prepare("select * from videos where codigo_perfil = ?");
+            // Sentencia para poner las categorías
+            $consulta = $canal->prepare("select descripcion from tematica where codigo = ?");
+            $consulta->bind_param("s", $codigo1);
+            $codigo1 = $valor;
+            $consulta->execute();
+            $consulta->bind_result($descripcion);
+            $consulta->fetch();
+            
+            $consulta->close();
+            // Sentencia para mostrar las películas
+            $consulta = $canal->prepare("select * from videos where codigo_perfil = ? order by 2");
             $consulta->bind_param("s", $perfil);
             $perfil = $valor;
             $consulta->execute();
@@ -36,10 +50,6 @@ if (isset($_GET["orden"])) {
             }
             $consulta->close();
         }
-        
-    } elseif ($_GET["orden"] == "tema") {
-        
-        
         
     }
 }
