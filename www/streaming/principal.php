@@ -21,11 +21,26 @@ $f->conexion($canal);
 
 // Videos
 $videos = [];
+$tematicas = [];
+
+function comparar($a, $b) {
+    return strcmp($a->titulo, $b->titulo);
+}
 
 if (isset($_GET["orden"])) {
     if ($_GET["orden"] == "alfa") {
         
-        
+        // Sentencia para mostrar las películas
+        $consulta = $canal->prepare("select * from videos where codigo_perfil = ? order by 2");
+        $consulta->bind_param("s", $perfil);
+        $perfil = $valor;
+        $consulta->execute();
+        $consulta->bind_result($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video);
+        while ($consulta->fetch()) {
+            array_push($videos, new Video($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video));
+        }
+        $consulta->close();
+        usort($videos, "comparar");
         
     } elseif ($_GET["orden"] == "tema") {
         
@@ -37,7 +52,7 @@ if (isset($_GET["orden"])) {
             $consulta->execute();
             $consulta->bind_result($descripcion);
             $consulta->fetch();
-            
+            $tematicas = array($valor => $descripcion);
             $consulta->close();
             // Sentencia para mostrar las películas
             $consulta = $canal->prepare("select * from videos where codigo_perfil = ? order by 2");

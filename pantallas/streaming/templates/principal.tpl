@@ -18,7 +18,7 @@
                 {foreach from=$videos item=video}
                 <div>
                     <h2>{$video->titulo}</h2>
-                    <a href="../../../recursos/streaming/videos/{$video->video}"><img src="../../../recursos/streaming/carteles/{$video->cartel}" alt="{$video->titulo}" /></a>
+                    <a href="../../../recursos/streaming/carteles/{$video->video}"><img src="../../../recursos/streaming/carteles/{$video->cartel}" alt="{$video->titulo}" /></a>
                     <p><b>Sinopsis:<br /></b>{$video->sinopsis}</p>
                     {if $video->descargable == "S"}
                     <a href="descargar.php?cod={$video->codigo}">Descargar</a>
