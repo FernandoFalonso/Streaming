@@ -30,14 +30,16 @@ function comparar($a, $b) {
 if (isset($_GET["orden"])) {
     if ($_GET["orden"] == "alfa") {
         
-        // Sentencia para mostrar las películas
-        $consulta = $canal->prepare("select * from videos where codigo_perfil = ? order by 2");
-        $consulta->bind_param("s", $perfil);
-        $perfil = $valor;
-        $consulta->execute();
-        $consulta->bind_result($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video);
-        while ($consulta->fetch()) {
-            array_push($videos, new Video($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video));
+        foreach ($usuario->perfiles as $i => $valor) {
+            // Sentencia para mostrar las películas
+            $consulta = $canal->prepare("select * from videos where codigo_perfil = ? order by 2");
+            $consulta->bind_param("s", $perfil);
+            $perfil = $valor;
+            $consulta->execute();
+            $consulta->bind_result($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video);
+            while ($consulta->fetch()) {
+                array_push($videos, new Video($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video));
+            }
         }
         $consulta->close();
         usort($videos, "comparar");
