@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+* {
+    background-color: #121212;
+    color: #909090;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+}
+
+#msg {
+    display: inline-block;
+    background-color: red;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 0.2em;
+    color: white;
+}
+
+#inicio-sesion {
+    background-color: #232323;
+    padding: 15px;
+    border-radius: 0.2em;
+    margin: 10px;
+    display: inline-block;
+    margin-top: 15%;
+}
+
+#inicio-sesion table td, #inicio-sesion table {
+    background-color: #232323;
+    text-align: left;
+}
+
+input {
+    border: 2px solid #303030;
+    padding: 10px;
+    border-radius: 0.2em;
+    background-color: #121212;
+}
+
+input[type=submit] {
+    background-color: #303030;
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+    background-color: #474747;
+    border: 2px solid #474747;
+}
+
+.descargar, #cerrar-sesion {
+    background-color: #303030!important;
+    text-decoration: none;
+    border: 2px solid #303030;
+    padding: 10px;
+    border-radius: 0.2em;
+}
+
+.descargar:hover, #cerrar-sesion:hover {
+    background-color: #474747!important;
+    border: 2px solid #474747;
+}
+
+#pelis {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 160px;
+}
+
+#pelis div {
+    text-align: center;
+    width: 21.8em;
+}
+
+#pelis * {
+    background-color: #1c1c1e;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 0.2em;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+header div {
+    padding: 10px;
+}
+
+header * {
+    background-color: #232323;
+}
+
+#orden {
+    display: flex;
+    justify-content: space-around;
+}
+
+#orden a {
+    text-decoration: none;
+    padding: 10px;
+    width: 50%;
+}
+
+#orden a:hover {
+    background-color: #474747;
+}
+
+.visto {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: auto!important;
+}

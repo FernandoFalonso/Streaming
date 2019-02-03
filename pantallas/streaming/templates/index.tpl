@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="css/estilos.css" />
     </head>
     <body onload="mostrarMsg('{$mensaje}')">
-        <div id="msg"></div>
         <div id="inicio-sesion">
             <form action="validar.php" method="post">
                 <table>
@@ -25,11 +24,12 @@
                 </table>
             </form>
         </div>
+        <div id="info"></div>
     </body>
     <script>
         function mostrarMsg(mensaje) {
             if (mensaje != "") {
-                document.getElementById("msg").innerHTML = mensaje;
+                document.getElementById("info").innerHTML = "<div id='msg'>" + mensaje + "</div>";
             }
         }
     </script>

@@ -58,7 +58,7 @@ while ($consulta->fetch()) {
 $f->sesion();
 $_SESSION["usuario"] = serialize(new Usuario($dniBD, $nombreBD, $perfiles));
 
-header ("Location: principal.php");
+header ("Location: principal.php?orden=alfa");
 exit;
 
 ?>
