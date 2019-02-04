@@ -15,24 +15,15 @@ if (!$f->validar()) {
 // Usuario
 $usuario = unserialize($_SESSION["usuario"]);
 
-// Canal
-$canal;
-$f->conexion($canal);
-
-// Video que se va a reproducir
-$video = "";
-if (isset($_POST["video"])) {
-    $video = $_POST["video"];
+// Código del vídeo que el usuario quiere reproducir
+$ruta = "";
+if (isset($_SESSION["ruta"])) {
+    $ruta = $_SESSION["ruta"];
 }
 
-$consulta = $canal->prepare("select video from videos where codigo = ?");
-$consulta->bind_param("s", $codigo);
-$codigo = $video;
-$consulta->bind_result($ruta);
-$consulta->execute();
-$consulta->fetch();
-
-$video = new VideoStream("../../recursos/streaming/videos/" . $ruta);
+$video = new VideoStream("../../recursos/streaming/videos/$ruta");
 $video->start();
+
+unset($_SESSION["ruta"]);
 
 ?>

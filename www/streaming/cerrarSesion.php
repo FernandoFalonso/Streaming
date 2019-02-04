@@ -11,7 +11,7 @@ if ($f->validar()) {
     exit;
 }
 
-header ("Location: javascript: //history.go(-1)");
+header ("Location: index.php");
 exit;
 
 ?>

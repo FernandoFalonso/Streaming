@@ -4,8 +4,6 @@ require_once ("BD.class.php");
 
 class Funciones {
     
-    public function __construct() {}
-    
     public static function sesion() {
         session_cache_limiter("nocache");
         session_start();
@@ -25,7 +23,7 @@ class Funciones {
             header ("Location: index.php?mensaje=" . urlencode("Error en la base de datos"));
             exit;
         }
-        $canal->set_charset("UTF-8");
+        mysqli_query($canal,"set names 'utf8'");
     }
     
 }

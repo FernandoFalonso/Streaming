@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="css/estilos.css" />
     </head>
     <body onload="mostrarMsg('{$mensaje}')">
+        <img id="logo" src="img/logo.png" alt="logotipo" />
         <div id="inicio-sesion">
             <form action="validar.php" method="post">
                 <table>
@@ -19,7 +20,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="Entrar" /></td>
+                        <td><input class="btn" type="submit" value="Entrar" /></td>
                     </tr>
                 </table>
             </form>

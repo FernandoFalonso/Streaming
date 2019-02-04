@@ -63,8 +63,23 @@ if (isset($_GET["orden"])) {
     }
 }
 
-$parametros = array("nombre" => $usuario->nombre, "videos" => $videos);
+// Array de vídeos vistos
+$vistos = [];
 
+// Consulta para marcar vídeos como "vistos"
+$consulta = $canal->prepare("select codigo_video from visionado where dni = ?");
+$consulta->bind_param("s", $dni1);
+$dni1 = $usuario->dni;
+$consulta->execute();
+$consulta->bind_result($codigo_video);
+while ($consulta->fetch()) {
+    array_push($vistos, $codigo_video);
+}
+
+// Array para pasar parámetros a las plantillas
+$parametros = array("nombre" => $usuario->nombre, "videos" => $videos, "vistos" => $vistos);
+
+// Plantilla
 $pantalla = new Pantalla();
 $pantalla->mostrar("principal.tpl", $parametros);
 

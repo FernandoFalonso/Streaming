@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
-* {
+body[onload] {
+    background-image: url("http://images6.alphacoders.com/321/321927.jpg");
+    background-size: cover
+}
+
+.oscuro {
     background-color: #121212;
+}
+
+* {
     color: #909090;
     font-family: 'Quicksand', sans-serif;
     text-align: center;
@@ -22,10 +30,11 @@
     border-radius: 0.2em;
     margin: 10px;
     display: inline-block;
-    margin-top: 15%;
+    margin-top: 1%;
 }
 
-#inicio-sesion table td, #inicio-sesion table {
+#inicio-sesion table td,
+#inicio-sesion table {
     background-color: #232323;
     text-align: left;
 }
@@ -47,24 +56,35 @@ input[type=submit]:hover {
     border: 2px solid #474747!important;
 }
 
-.descargar, #cerrar-sesion {
+.btn {
     background-color: #303030!important;
     text-decoration: none;
     border: 2px solid #303030;
     padding: 10px;
+    font-size: 15px!important;
     border-radius: 0.2em;
+    display: inline-block;
 }
 
-.descargar:hover, #cerrar-sesion:hover {
+.btn:hover {
     background-color: #474747!important;
     border: 2px solid #474747;
+    cursor: pointer;
+}
+
+#main {
+    margin-top: 130px;
+}
+
+#botones {
+    margin: 30px;
 }
 
 #pelis {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 160px;
+    margin-top: 180px;
 }
 
 #pelis div {
@@ -109,13 +129,12 @@ header * {
     background-color: #474747;
 }
 
-.visto {
-    position: relative;
-    top: 0;
-    right: 0;
-    width: auto!important;
+#logo {
+    display: block;
+    margin: auto;
+    margin-top: 14%;
 }
 
-#video {
-    margin-top: 140px;
+.visto {
+    color: white;
 }
