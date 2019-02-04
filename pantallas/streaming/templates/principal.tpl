@@ -21,10 +21,16 @@
             <div>
                 <div class="visto"></div>
                 <h2>{$video->titulo}</h2>
-                <a href="../../recursos/streaming/videos/{$video->video}"><img src="carteles/{$video->cartel}" alt="{$video->titulo}" width="300" height="423" /></a>
+                <form action="ver.php" method="post">
+                    <input type="hidden" name="video" value="{$video->codigo}" />
+                    <input type="image" name="img" src="carteles/{$video->cartel}" width="300" height="423" />
+                </form>
                 <p><b>Sinopsis:<br /></b>{$video->sinopsis}</p>
                 {if $video->descargable == "S"}
-                <a class="descargar" href="descargar.php?cod={$video->codigo}">Descargar</a>
+                <form action="descargar.php" method="post">
+                    <input type="hidden" name="video" value="{$video->codigo}" />
+                    <input type="submit" value="Descargar" />
+                </form>
                 {/if}
             </div>
             {/foreach}

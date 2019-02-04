@@ -32,19 +32,19 @@
 
 input {
     border: 2px solid #303030;
-    padding: 10px;
+    padding: 10px!important;
     border-radius: 0.2em;
     background-color: #121212;
 }
 
 input[type=submit] {
-    background-color: #303030;
+    background-color: #303030!important;
 }
 
 input[type=submit]:hover {
     cursor: pointer;
-    background-color: #474747;
-    border: 2px solid #474747;
+    background-color: #474747!important;
+    border: 2px solid #474747!important;
 }
 
 .descargar, #cerrar-sesion {
@@ -114,4 +114,8 @@ header * {
     top: 0;
     right: 0;
     width: auto!important;
+}
+
+#video {
+    margin-top: 140px;
 }

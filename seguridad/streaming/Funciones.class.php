@@ -25,7 +25,7 @@ class Funciones {
             header ("Location: index.php?mensaje=" . urlencode("Error en la base de datos"));
             exit;
         }
-        $canal->set_charset("utf-8");
+        $canal->set_charset("UTF-8");
     }
     
 }
