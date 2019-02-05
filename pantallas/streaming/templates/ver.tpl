@@ -17,16 +17,18 @@
                 <form action="descargar.php" method="post">
                     <a class="btn" onclick="javascript:history.go(-1)">Volver</a>
                 {if $descargable == "S"}
-                    <input type="hidden" name="video" value="{$codigo}" />
+                    <input type="hidden" name="titulo" value="{$titulo}" />
+                    <input type="hidden" name="video" value="{$video}" />
                     <input class="btn" type="submit" value="Descargar" />
                 {/if}
                     <h1>{$titulo}</h1>
                 </form>
             </div>
             <div id="pelicula">
-                <iframe id="video" src="video.php" frameborder="0" width="1280" height="720">
-                    Su navegador no soporta IFrames.
-                </iframe>
+                <video id="video" width="1280" height="720" controls="controls" preload="none" poster="carteles/{$cartel}" controlsList="nodownload">
+                    <source src="video.php?v={$video}" type="video/mp4" />
+                    Tu navegador no soporta vídeos.
+                </video>
             </div>
         </div>
     </body>

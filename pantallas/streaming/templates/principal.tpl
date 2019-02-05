@@ -22,7 +22,7 @@
                 <p class="visto">
                     {foreach from=$vistos item=visto}
                         {if $video->codigo == $visto}
-                        VISTO
+                        VISUALIZADA
                         {/if}
                     {/foreach}
                 </p>
@@ -34,7 +34,8 @@
                 <p><b>Sinopsis:<br /></b>{$video->sinopsis}</p>
                 {if $video->descargable == "S"}
                 <form action="descargar.php" method="post">
-                    <input type="hidden" name="video" value="{$video->codigo}" />
+                    <input type="hidden" name="titulo" value="{$video->titulo}" />
+                    <input type="hidden" name="video" value="{$video->video}" />
                     <input class="btn" type="submit" value="Descargar" />
                 </form>
                 {/if}

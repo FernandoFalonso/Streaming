@@ -32,9 +32,6 @@ $consulta->execute();
 $consulta->bind_result($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video);
 $consulta->fetch();
 
-// Creo una variable de sesión para guardar la ruta del vídeo que se va a reproducir
-$_SESSION["ruta"] = $video;
-
 $consulta->close();
 
 // Consulta para evitar crear más de una fila en visionado
@@ -58,7 +55,7 @@ if ($consulta->num_rows() < 1) {
 }
 
 // Array para pasar parámetros a las plantillas
-$parametros = array("nombre" => $usuario->nombre, "titulo" => $titulo, "descargable" => $descargable, "codigo" => $codigo);
+$parametros = array("nombre" => $usuario->nombre, "titulo" => $titulo, "descargable" => $descargable, "codigo" => $codigo, "video" => $video, "cartel" => $cartel);
 
 // Plantilla
 $pantalla = new Pantalla();

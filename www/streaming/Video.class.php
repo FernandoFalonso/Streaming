@@ -9,6 +9,7 @@ class Video {
     private $codigo_perfil;
     private $sinopsis;
     private $video;
+    private $tematica;
     
     public function __construct($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video) {
         $this->codigo = $codigo;
@@ -26,6 +27,10 @@ class Video {
         } else {
             return null;
         }
+    }
+    
+    public function setTematica($tematica) {
+        $this->tematica = $tematica;
     }
     
 }

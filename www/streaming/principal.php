@@ -59,9 +59,23 @@ if (isset($_GET["orden"])) {
                 array_push($videos, new Video($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video));
             }
             $consulta->close();
+            
         }
     }
 }
+foreach ($videos as $i => $valor) {
+    $consulta = $canal->prepare("select codigo_tematica from asociado where codigo_video = ?");
+    $consulta->bind_param("s", $codigo_video);
+    $codigo_video = $valor->codigo;
+    $consulta->execute();
+    $consulta->bind_result($codigo_tematica);
+    while ($consulta->fetch()) {
+        array_push($tematicas, $codigo_tematica);
+        $valor->setTematica($codigo_tematica);
+    }
+    $consulta->close();
+}
+sort($tematicas);
 
 // Array de vídeos vistos
 $vistos = [];
