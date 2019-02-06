@@ -50,7 +50,7 @@ if (isset($_GET["orden"])) {
         foreach ($usuario->perfiles as $i => $valor) {
             
             // Sentencia para mostrar las películas
-            $consulta = $canal->prepare("select * from videos where codigo_perfil = ? order by 2");
+            $consulta = $canal->prepare("select v.*, t.descripcion from videos v, asociado a, tematica t where v.codigo = a.codigo_video and a.codigo_tematica = t.codigo and v.codigo_perfil = "P1" order by t.descripcion");
             $consulta->bind_param("s", $perfil);
             $perfil = $valor;
             $consulta->execute();
