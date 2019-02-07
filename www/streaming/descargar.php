@@ -36,11 +36,13 @@ $ruta = Crypt::desencriptar($_SESSION["clave"], $video);
 
 // Nombre del archivo
 $name = $titulo . ".zip";
+$rutaCompleta = "../../recursos/streaming/videos/$ruta";
+echo $rutaCompleta;
 
 // Compresión del vídeo
 $zip = new ZipArchive();
 if ($zip->open($name, ZIPARCHIVE::CREATE)) {
-    $zip->addFile("../../recursos/streaming/videos/$ruta", $titulo . ".mp4");
+    $zip->addFile($rutaCompleta, $titulo . ".mp4");
     $zip->close();
     // Si el archivo existe, se descarga
     if (file_exists($name)) {
