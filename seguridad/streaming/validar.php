@@ -57,6 +57,8 @@ while ($consulta->fetch()) {
 // Variables de sesión
 $f->sesion();
 $_SESSION["usuario"] = serialize(new Usuario($dniBD, $nombreBD, $perfiles));
+// Esta clave servirá para encriptar y desencriptar
+$_SESSION["clave"] = uniqid();
 
 header ("Location: principal.php?orden=alfa");
 exit;

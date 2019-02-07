@@ -1,6 +1,7 @@
 <?php
 
 require_once ("../../seguridad/streaming/VideoStream.class.php");
+require_once ("../../seguridad/streaming/Crypt.class.php");
 require_once ("../../seguridad/streaming/Funciones.class.php");
 $f = new Funciones();
 
@@ -11,7 +12,10 @@ if (!$f->validar()) {
 }
 
 // Código del vídeo que el usuario quiere reproducir
-$ruta = $_GET["v"];
+$rutaEnc = $_GET["v"];
+
+// Desencripto la ruta
+$ruta = Crypt::desencriptar($_SESSION["clave"], $rutaEnc);
 
 // Reproducción del vídeo
 $video = new VideoStream("../../recursos/streaming/videos/$ruta");

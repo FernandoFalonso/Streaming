@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-02-05 22:58:31
+/* Smarty version 3.1.33, created on 2019-02-07 15:14:16
   from 'C:\UwAmp\pantallas\streaming\templates\principal.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5c5a0707352a78_28863805',
+  'unifunc' => 'content_5c5c3d3857bca8_07292835',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0f28681f7eecf155afeb0367b2b80bdb4cdde485' => 
     array (
       0 => 'C:\\UwAmp\\pantallas\\streaming\\templates\\principal.tpl',
-      1 => 1549403910,
+      1 => 1549548834,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5c5a0707352a78_28863805 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5c5c3d3857bca8_07292835 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
     <head>
@@ -41,11 +41,24 @@ function content_5c5a0707352a78_28863805 (Smarty_Internal_Template $_smarty_tpl)
             </div>
         </header>
         <div id="pelis">
+            <?php $_smarty_tpl->_assignInScope('tema', array());?>
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['videos']->value, 'video');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['video']->value) {
 ?>
+                <?php if ($_smarty_tpl->tpl_vars['video']->value->tematica != null && !in_array($_smarty_tpl->tpl_vars['video']->value->tematica,$_smarty_tpl->tpl_vars['tema']->value)) {?>
+                <div id="tematica">
+                    <?php echo $_smarty_tpl->tpl_vars['video']->value->tematica;?>
+
+                    <?php $_tmp_array = isset($_smarty_tpl->tpl_vars['tema']) ? $_smarty_tpl->tpl_vars['tema']->value : array();
+if (!is_array($_tmp_array) || $_tmp_array instanceof ArrayAccess) {
+settype($_tmp_array, 'array');
+}
+$_tmp_array[] = $_smarty_tpl->tpl_vars['video']->value->tematica;
+$_smarty_tpl->_assignInScope('tema', $_tmp_array);?>
+                </div>
+                <?php }?>
             <div>
                 <p class="visto">
                     <?php

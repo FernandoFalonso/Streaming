@@ -18,17 +18,18 @@
                     <a class="btn" onclick="javascript:history.go(-1)">Volver</a>
                 {if $descargable == "S"}
                     <input type="hidden" name="titulo" value="{$titulo}" />
-                    <input type="hidden" name="video" value="{$video}" />
+                    <input type="hidden" name="video" value="{$ruta}" />
                     <input class="btn" type="submit" value="Descargar" />
                 {/if}
                     <h1>{$titulo}</h1>
                 </form>
             </div>
             <div id="pelicula">
-                <video id="video" width="1280" height="720" controls="controls" preload="none" poster="carteles/{$cartel}" controlsList="nodownload">
-                    <source src="video.php?v={$video}" type="video/mp4" />
+                <!--<video id="video" width="1280" height="720" controls="controls" preload="none" poster="carteles/{$cartel}" controlsList="nodownload">
+                    <source src="video.php?v={$ruta}" type="video/mp4" />
                     Tu navegador no soporta vídeos.
-                </video>
+                </video>-->
+                <iframe src="video.php?v={$ruta}" frameborder="0"></iframe>
             </div>
         </div>
     </body>

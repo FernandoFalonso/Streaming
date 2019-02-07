@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-02-05 18:44:44
+/* Smarty version 3.1.33, created on 2019-02-07 16:53:50
   from 'C:\UwAmp\pantallas\streaming\templates\ver.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5c59cb8cdc7a16_19376557',
+  'unifunc' => 'content_5c5c548e72aa72_23956818',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dd7e40ce4bdec49b519e4c5b455ceb7c0ba800c7' => 
     array (
       0 => 'C:\\UwAmp\\pantallas\\streaming\\templates\\ver.tpl',
-      1 => 1549388682,
+      1 => 1549554828,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5c59cb8cdc7a16_19376557 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5c5c548e72aa72_23956818 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
     <head>
@@ -43,7 +43,7 @@ function content_5c59cb8cdc7a16_19376557 (Smarty_Internal_Template $_smarty_tpl)
                 <?php if ($_smarty_tpl->tpl_vars['descargable']->value == "S") {?>
                     <input type="hidden" name="titulo" value="<?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
 " />
-                    <input type="hidden" name="video" value="<?php echo $_smarty_tpl->tpl_vars['video']->value;?>
+                    <input type="hidden" name="video" value="<?php echo $_smarty_tpl->tpl_vars['ruta']->value;?>
 " />
                     <input class="btn" type="submit" value="Descargar" />
                 <?php }?>
@@ -52,12 +52,14 @@ function content_5c59cb8cdc7a16_19376557 (Smarty_Internal_Template $_smarty_tpl)
                 </form>
             </div>
             <div id="pelicula">
-                <video id="video" width="1280" height="720" controls="controls" preload="none" poster="carteles/<?php echo $_smarty_tpl->tpl_vars['cartel']->value;?>
+                <!--<video id="video" width="1280" height="720" controls="controls" preload="none" poster="carteles/<?php echo $_smarty_tpl->tpl_vars['cartel']->value;?>
 " controlsList="nodownload">
-                    <source src="video.php?v=<?php echo $_smarty_tpl->tpl_vars['video']->value;?>
+                    <source src="video.php?v=<?php echo $_smarty_tpl->tpl_vars['ruta']->value;?>
 " type="video/mp4" />
                     Tu navegador no soporta vídeos.
-                </video>
+                </video>-->
+                <iframe src="video.php?v=<?php echo $_smarty_tpl->tpl_vars['ruta']->value;?>
+" frameborder="0"></iframe>
             </div>
         </div>
     </body>

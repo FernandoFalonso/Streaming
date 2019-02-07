@@ -2,6 +2,7 @@
 
 require_once ("Pantalla.class.php");
 require_once ("../../seguridad/streaming/Usuario.class.php");
+require_once ("../../seguridad/streaming/Crypt.class.php");
 require_once ("../../seguridad/streaming/Funciones.class.php");
 $f = new Funciones();
 
@@ -37,6 +38,9 @@ $consulta->fetch();
 
 $consulta->close();
 
+// Encripta la ruta
+$rutaEnc = Crypt::encriptar($_SESSION["clave"], $video);
+
 // Consulta para evitar crear más de una fila en visionado
 $consulta = $canal->prepare("select * from visionado where dni = ? and codigo_video = ?");
 $consulta->bind_param("ss", $dni1, $codigo_video1);
@@ -58,7 +62,7 @@ if ($consulta->num_rows() < 1) {
 }
 
 // Array para pasar parámetros a las plantillas
-$parametros = array("nombre" => $usuario->nombre, "titulo" => $titulo, "descargable" => $descargable, "codigo" => $codigo, "video" => $video, "cartel" => $cartel);
+$parametros = array("nombre" => $usuario->nombre, "titulo" => $titulo, "descargable" => $descargable, "codigo" => $codigo, "ruta" => $rutaEnc, "cartel" => $cartel);
 
 // Plantilla
 $pantalla = new Pantalla();

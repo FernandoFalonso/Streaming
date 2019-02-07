@@ -2,6 +2,7 @@
 
 require_once ("Pantalla.class.php");
 require_once ("../../seguridad/streaming/Usuario.class.php");
+require_once ("../../seguridad/streaming/Crypt.class.php");
 require_once ("../../seguridad/streaming/Funciones.class.php");
 $f = new Funciones();
 
@@ -30,13 +31,16 @@ if (isset($_POST["titulo"])) {
     exit;
 }
 
+// Desencripto la ruta
+$ruta = Crypt::desencriptar($_SESSION["clave"], $video);
+
 // Nombre del archivo
 $name = $titulo . ".zip";
 
 // Compresión del vídeo
 $zip = new ZipArchive();
 if ($zip->open($name, ZIPARCHIVE::CREATE)) {
-    $zip->addFile("../../recursos/streaming/videos/$video", $titulo . ".mp4");
+    $zip->addFile("../../recursos/streaming/videos/$ruta", $titulo . ".mp4");
     $zip->close();
     // Si el archivo existe, se descarga
     if (file_exists($name)) {
