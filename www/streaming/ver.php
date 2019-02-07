@@ -18,6 +18,9 @@ $usuario = unserialize($_SESSION["usuario"]);
 $cod = "";
 if (isset($_POST["video"])) {
     $cod = $_POST["video"];    
+} else {
+    header("Location: javascript:history.go(-1)");
+    exit;
 }
 
 // Canal

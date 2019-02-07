@@ -11,7 +11,7 @@ class Video {
     private $video;
     private $tematica;
     
-    public function __construct($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video) {
+    public function __construct($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video, $tematica) {
         $this->codigo = $codigo;
         $this->titulo = $titulo;
         $this->cartel = $cartel;
@@ -19,6 +19,7 @@ class Video {
         $this->codigo_perfil = $codigo_perfil;
         $this->sinopsis = $sinopsis;
         $this->video = $video;
+        $this->tematica = $tematica;
     }
     
     public function __get($attr) {
@@ -27,10 +28,6 @@ class Video {
         } else {
             return null;
         }
-    }
-    
-    public function setTematica($tematica) {
-        $this->tematica = $tematica;
     }
     
 }

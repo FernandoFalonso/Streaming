@@ -18,11 +18,16 @@ $usuario = unserialize($_SESSION["usuario"]);
 $video = "";
 if (isset($_POST["video"])) {
     $video = $_POST["video"];
-    echo $video;
+} else {
+    header("Location: javascript:history.go(-1)");
+    exit;
 }
 $titulo = "";
 if (isset($_POST["titulo"])) {
     $titulo = $_POST["titulo"];
+} else {
+    header("Location: javascript:history.go(-1)");
+    exit;
 }
 
 // Nombre del archivo

@@ -17,7 +17,14 @@
             </div>
         </header>
         <div id="pelis">
+            {assign "tema" []}
             {foreach from=$videos item=video}
+                {if $video->tematica != null and !in_array($video->tematica, $tema)}
+                <div id="tematica">
+                    {$video->tematica}
+                    {append var="tema" value=$video->tematica}
+                </div>
+                {/if}
             <div>
                 <p class="visto">
                     {foreach from=$vistos item=visto}

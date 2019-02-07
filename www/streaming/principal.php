@@ -21,10 +21,13 @@ $f->conexion($canal);
 
 // Videos
 $videos = [];
-$tematicas = [];
 
-function comparar($a, $b) {
+function ordenT($a, $b) {
     return strcmp($a->titulo, $b->titulo);
+}
+
+function ordenD($a, $b) {
+    return strcmp($a->tematica, $b->tematica);
 }
 
 if (isset($_GET["orden"])) {
@@ -38,44 +41,32 @@ if (isset($_GET["orden"])) {
             $consulta->execute();
             $consulta->bind_result($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video);
             while ($consulta->fetch()) {
-                array_push($videos, new Video($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video));
+                array_push($videos, new Video($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video, null));
             }
         }
         $consulta->close();
-        // Ordena alfabeticamente el array de videos
-        usort($videos, "comparar");
+        // Ordena por título el array de vídeos
+        usort($videos, "ordenT");
         
     } elseif ($_GET["orden"] == "tema") {
         
         foreach ($usuario->perfiles as $i => $valor) {
             
             // Sentencia para mostrar las películas
-            $consulta = $canal->prepare("select v.*, t.descripcion from videos v, asociado a, tematica t where v.codigo = a.codigo_video and a.codigo_tematica = t.codigo and v.codigo_perfil = "P1" order by t.descripcion");
+            $consulta = $canal->prepare("select v.*, t.descripcion from videos v, asociado a, tematica t where v.codigo = a.codigo_video and a.codigo_tematica = t.codigo and v.codigo_perfil = ? order by t.descripcion");
             $consulta->bind_param("s", $perfil);
             $perfil = $valor;
             $consulta->execute();
-            $consulta->bind_result($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video);
+            $consulta->bind_result($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video, $tematica);
             while ($consulta->fetch()) {
-                array_push($videos, new Video($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video));
+                array_push($videos, new Video($codigo, $titulo, $cartel, $descargable, $codigo_perfil, $sinopsis, $video, $tematica));
             }
             $consulta->close();
-            
+            // Ordena por temática el array de vídeos
+            usort($videos, "ordenD");
         }
     }
 }
-foreach ($videos as $i => $valor) {
-    $consulta = $canal->prepare("select codigo_tematica from asociado where codigo_video = ?");
-    $consulta->bind_param("s", $codigo_video);
-    $codigo_video = $valor->codigo;
-    $consulta->execute();
-    $consulta->bind_result($codigo_tematica);
-    while ($consulta->fetch()) {
-        array_push($tematicas, $codigo_tematica);
-        $valor->setTematica($codigo_tematica);
-    }
-    $consulta->close();
-}
-sort($tematicas);
 
 // Array de vídeos vistos
 $vistos = [];
