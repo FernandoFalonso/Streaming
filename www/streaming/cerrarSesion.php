@@ -1,12 +1,11 @@
 <?php
 
 require_once ("../../seguridad/streaming/Funciones.class.php");
-$f = new Funciones();
 
-$f->sesion();
-if ($f->validar()) {
+Funciones::sesion();
+if (Funciones::validar()) {
     session_destroy();
-    unset($_SESSION["usuario"]);
+    unset($_SESSION);
     header ("Location: index.php");
     exit;
 }

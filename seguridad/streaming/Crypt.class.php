@@ -21,7 +21,7 @@ class Crypt {
 		return base64_encode($rutaCifrada);
     }
     
-    public static function desencriptar($clave, $rutaCodificada){
+    public static function desencriptar($clave, $rutaCodificada) {
 		$rutaCifrada = base64_decode($rutaCodificada);
 		$id = mcrypt_module_open("cast-128", "", "ecb", "");
 		$length = mcrypt_enc_get_iv_size($id);

@@ -4,10 +4,9 @@ require_once ("Pantalla.class.php");
 require_once ("Video.class.php");
 require_once ("../../seguridad/streaming/Usuario.class.php");
 require_once ("../../seguridad/streaming/Funciones.class.php");
-$f = new Funciones();
 
-$f->sesion();
-if (!$f->validar()) {
+Funciones::sesion();
+if (!Funciones::validar()) {
     header ("Location: index.php?mensaje=" . urlencode("Debe estar registrado"));
     exit;
 }
@@ -17,7 +16,7 @@ $usuario = unserialize($_SESSION["usuario"]);
 
 // Canal
 $canal;
-$f->conexion($canal);
+Funciones::conexion($canal);
 
 // Videos
 $videos = [];

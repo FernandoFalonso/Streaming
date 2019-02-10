@@ -2,10 +2,9 @@
 
 require_once ("Usuario.class.php");
 require_once ("Funciones.class.php");
-$f = new Funciones();
 
 $canal;
-$f->conexion($canal);
+Funciones::conexion($canal);
 
 $dni = "";
 if (isset($_POST["dni"])) {
@@ -55,7 +54,7 @@ while ($consulta->fetch()) {
 }
 
 // Variables de sesión
-$f->sesion();
+Funciones::sesion();
 $_SESSION["usuario"] = serialize(new Usuario($dniBD, $nombreBD, $perfiles));
 // Esta clave servirá para encriptar y desencriptar
 $_SESSION["clave"] = uniqid();

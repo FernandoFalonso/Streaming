@@ -25,11 +25,10 @@
                 </form>
             </div>
             <div id="pelicula">
-                <!--<video id="video" width="1280" height="720" controls="controls" preload="none" poster="carteles/{$cartel}" controlsList="nodownload">
+                <video id="video" width="1280" height="720" controls="controls" preload="none" poster="carteles/{$cartel}" controlsList="nodownload">
                     <source src="video.php?v={$ruta}" type="video/mp4" />
                     Tu navegador no soporta vídeos.
-                </video>-->
-                <iframe src="video.php?v={$ruta}" frameborder="0"></iframe>
+                </video>
             </div>
         </div>
     </body>

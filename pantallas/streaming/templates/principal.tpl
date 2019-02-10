@@ -27,11 +27,9 @@
                 {/if}
             <div>
                 <p class="visto">
-                    {foreach from=$vistos item=visto}
-                        {if $video->codigo == $visto}
-                        VISUALIZADA
-                        {/if}
-                    {/foreach}
+                    {if in_array($video->codigo, $vistos)}
+                    VISUALIZADA
+                    {/if}
                 </p>
                 <h2>{$video->titulo}</h2>
                 <form action="ver.php" method="post">

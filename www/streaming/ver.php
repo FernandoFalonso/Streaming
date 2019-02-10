@@ -4,10 +4,9 @@ require_once ("Pantalla.class.php");
 require_once ("../../seguridad/streaming/Usuario.class.php");
 require_once ("../../seguridad/streaming/Crypt.class.php");
 require_once ("../../seguridad/streaming/Funciones.class.php");
-$f = new Funciones();
 
-$f->sesion();
-if (!$f->validar()) {
+Funciones::sesion();
+if (!Funciones::validar()) {
     header ("Location: index.php?mensaje=" . urlencode("Debe estar registrado"));
     exit;
 }
@@ -26,7 +25,7 @@ if (isset($_POST["video"])) {
 
 // Canal
 $canal;
-$f->conexion($canal);
+Funciones::conexion($canal);
 
 // Consulta para conseguir la información del vídeo
 $consulta = $canal->prepare("select * from videos where codigo = ?");

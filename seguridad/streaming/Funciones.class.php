@@ -10,7 +10,7 @@ class Funciones {
     }
     
     public static function validar() {
-        if (isset($_SESSION["usuario"])) {
+        if (isset($_SESSION["usuario"]) && $_SESSION["usuario"]) {
             return true;
         } else {
             return false;

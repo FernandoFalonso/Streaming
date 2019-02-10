@@ -5,7 +5,6 @@ class BD {
     const USER = "videos";
     const PASS = "videos";
     const BD = "videos";
-    const RUTA = "../../recursos/";
 }
 
 ?>
